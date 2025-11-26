@@ -1,0 +1,277 @@
+\documentclass[a4paper,12pt]{article}
+
+%------------------------------------
+% PACKAGES
+%------------------------------------
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{lipsum} % tijdelijk voor voorbeeldtekst
+
+\geometry{margin=3cm}
+
+\usepackage{graphicx} % nodig voor afbeeldingen
+\usepackage{float}    % voor [H] optie, zodat je afbeelding exact kunt plaatsen
+
+%------------------------------------
+% DOCUMENT
+%------------------------------------
+\begin{document}
+
+%------------------------------------
+% TITELPAGINA
+%------------------------------------
+\title{Modelleren van Haaiengroei}
+\author{Olaf Smits, Konstantinos Pantelakis en Teun van den Berg \\ \small TU Delft}
+\date{\today}
+
+\maketitle
+\newpage
+
+%------------------------------------
+% VOORWOORD
+%------------------------------------
+\section*{Voorwoord}
+Voorwoordtekst hier.  
+\newpage
+
+%------------------------------------
+% ABSTRACT
+%------------------------------------
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+Hier komt de abstract van het artikel.  
+\newpage
+
+%------------------------------------
+% INHOUDSOPGAVE
+%------------------------------------
+\tableofcontents
+\newpage
+
+%------------------------------------
+% 1. INLEIDING
+%------------------------------------
+\section{Inleiding}
+Introduceer het probleem, de context en eerdere literatuur.  
+\newpage
+
+%------------------------------------
+% 2. ANALYSE VAN HET HUIDIGE MODEL
+%------------------------------------
+\section{Analyse van het huidige model}
+Beschrijf het huidige groeimodel en analyseer de eigenschappen.  
+
+\subsection{biologische interpretatie}
+De massaversie van de groeivergelijking van von Bertalanffy wordt gegeven door:
+
+\begin{equation}
+\frac{dw(t)}{dt} = \eta w(t)^{2/3} - \kappa w(t)
+\end{equation}
+
+Hier wordt dus de verandering van de massa over de tijd weergegeven. De groei van de massa wordt bepaald door:
+\begin{equation}
+    \text{groeisnelheid} = \text{toegevoegde biomassa} - \text{verloren biomassa}
+\end{equation}
+
+De anabole opname is evenreding met de massa tot de macht $\frac{2}{3}$ maal een contante $\eta $. De anabole opname is evenredig met het lichaamsoppervlak (darmen/maag). De katabole verliezen  (de stofwisseling nodig om in leven te blijven) is evenredig met de massa van het organisme.
+\vspace{5mm}
+
+De constante $ \eta $ is de anabole coëfficiënt. Het geeft aan hoe snel en efficiënt een organisme massa kan opbouwen per eenheid oppervlakte.
+De constante $ \kappa $ is de katabole coëfficiënt. Het geeft aan welk deel van de lichaamsmassa per tijdseenheid wordt `verbrand' of afgebroken om in leven te blijven.
+\vspace{5mm}
+
+De kern van het model is dat de verhouding tussen het lichaamsoppervlak en het gewicht van de haai verandert naarnate de haai verjaart. Hierdoor verandert ook de verhouding tussen de opname en het verbruik van de haai.
+
+
+De kern van dit biologische model is de veranderende verhouding tussen opname en verbruik naarmate de haai ouder wordt.
+
+\begin{itemize}
+    \item Jonge haaien: Bij een kleine haai is de verhouding tussen oppervlakte en volume hoger en dus gunstig voor de groei van de haai; er is relatief veel oppervlakte om de behoefte van de massa te voorzien. Hierdoor is de groeisnelheid relatief hoog.
+    
+    \item Volwassen haaien: Naarmate de haai groeit, neemt de massa (en dus de onderhoudskosten) sneller toe dan de oppervlakte van de organen die energie en zuurstof leveren. Dit resulteert in een lagere groeisnelheid.
+\end{itemize}
+De groeisnelheid vlakt dus af en uiteindelijk wordt er een evenwichtsoplossing bereikt, zodanig dat de oppervlakte van de kieuwen en darmen precies genoeg energie en zuurstof levert om de  lichaamsmassa te onderhouden. Hierdoor blijft uiteindelijk de massa van de haai nagenoeg constant.
+
+
+
+\subsection{parameter analyse/optimalisatie}
+
+\begin{equation}
+\frac{dw(t)}{dt} = \eta w(t)^{a} - \kappa w(t)^{b}
+\end{equation}
+
+Nu we gezien hebben wat de differentiaalvergelijking betekent kunnen we ons focussen op de paramter analyse. De parameter $a$ die gekozen wordt voor de groeivergelijking (3) is $\frac{2}{3}$. 
+Als een dier groeit, neemt het volume toe als de derde macht van de lengte 
+($\text{volume} \propto L^3$), terwijl het oppervlak slechts toeneemt als de tweede macht 
+van de lengte ($\text{oppervlak} \propto L^2$). 
+
+Omdat massa $W$ evenredig is met het volume, geldt $W \propto L^3$ en dus 
+$L \propto W^{1/3}$. Aangezien het oppervlak evenredig is met $L^2$, wordt dit
+
+\[
+\text{oppervlak} \propto L^2 \propto (W^{1/3})^2 = W^{2/3}.
+\]
+
+Daarom verschijnt in de groeivergelijking de exponent $a = \frac{2}{3}$ \cite{bertalanffy1957}
+
+\vspace{5mm}
+In andere bronnen wordt de parameter $a$ ook gekozen als $\tfrac{3}{4}$. Deze waarde komt voort uit een andere redenering:  
+In dit model wordt niet gekeken naar massagroei ten opzichte van groei via oppervlakteschaal, maar naar de efficiëntie van het metabolisme van een organisme. Deze efficiëntie is afhankelijk van de massa van het organisme.
+
+Wanneer een organisme een grote massa heeft, is er minder energie nodig per kilogram lichaamsgewicht, doordat het bloedvatenstelsel efficiënter werkt naarmate het organisme groter wordt. Zuurstoftransport en metabolisme bepalen uiteindelijk hoeveel biomassa een organisme kan opbouwen.
+
+De hoeveelheid bloed die per minuut wordt rondgepompt, is gelijk aan het \emph{slagvolume} maal de \emph{hartslagfrequentie}. Het slagvolume is ongeveer evenredig met het lichaamsgewicht, terwijl de hartslagfrequentie afneemt volgens een machtwet met exponent $-0{,}25$. Dus:
+
+\[
+S \propto W^{1}, \qquad F \propto W^{-1/4}
+\]
+
+Dit combineren geeft:
+
+\[
+S \cdot F \propto W^{\,1 - 1/4} = W^{3/4}.
+\]
+
+Hieruit volgt dat de zuurstoftoevoer en daarmee de metabole capaciteit schaalt als $W^{3/4}$, waardoor in dergelijke modellen de exponent $a = \tfrac{3}{4}$ wordt gekozen. \cite{bertalanffy1957} \vspace{5mm}
+
+Hoewel we $a$ beperken tot $\tfrac{2}{3}$ en $\tfrac{3}{4}$, is er geen universele waarde voor $a$. Dit heeft een aantal redenen:
+\begin{itemize}
+    \item \textbf{Verschillende soorten:} Verschillende haaien volgen variërende groeipatronen. Dit verschil komt door bijvoorbeeld milieu en ecologie, of simpelweg de fysiologie van de haaiensoort.
+    \item \textbf{Gecontroleerde vs.\ `natuurlijke' experimenten:} De onzekerheid in $a$ heeft ook te maken met de herkomst van de data: gecontroleerde omstandigheden (bijvoorbeeld dieren in gevangenschap) geven stabielere parameterschattingen dan natuurlijke omstandigheden. Dit kan worden verklaard doordat in gecontroleerde omstandigheden weinig varieert, terwijl in het wild vele factoren fluctueren.
+    \item \textbf{Het model:} Het model (3) is beperkt; de groei van sommige soorten is niet adequaat te beschrijven met dit (simpele) model.
+\end{itemize}
+
+Om dit onderzoek toch uit te kunnen voeren, wordt $a$ gekozen als $a = \tfrac{2}{3}$ en $a = \tfrac{3}{4}$.
+
+\vspace{5mm}
+
+De parameter $b$ wordt in vrijwel alle modellen gekozen als $b = 1$. 
+De redenering loopt als volgt: voor elk kilogram lichaamsgewicht is er een minimale hoeveelheid energie nodig om de cellen in leven te houden. Het lichaamsgewicht en het energieverbruik van hetzelfde organisme zijn dus lineair evenredig:
+
+
+\[
+\text{onderhoud} \propto w^{1},
+\]
+een lineair verband.
+\vspace{5mm}
+\subsection{evenwichtsoplossing}
+De volgende stap in het model is het vinden van evenwichtsoplossingen. Deze wordt gevonden door de differentiaalvergelijking gelijk te stellen aan nul. Hieronder de evenwichtsoplossing voor een willekeurige a.
+
+
+\[
+\frac{dw}{dt} = \eta w^{a} - \kappa w
+\quad\Rightarrow\quad
+0 = \eta w^{a} - \kappa w 
+     = w^{a}(\eta - \kappa w^{1-a}),
+\]
+\[
+\Rightarrow\quad
+w = 0,
+\qquad
+w^{\,1-a} = \frac{\eta}{\kappa}
+\;\Rightarrow\;
+w = \left(\frac{\eta}{\kappa}\right)^{\tfrac{1}{1-a}}.
+\]
+
+
+
+Bij invullen van $a = \tfrac{2}{3}$ en $a = \tfrac{3}{4}$ volgt:
+
+
+\[
+w^* =
+\left(\frac{\eta}{\kappa}\right)^{\tfrac{1}{1-a}}
+=
+\begin{cases}
+\left(\dfrac{\eta}{\kappa}\right)^3, & a=\tfrac{2}{3}, \\[6pt]
+\left(\dfrac{\eta}{\kappa}\right)^4, & a=\tfrac{3}{4}.
+\end{cases}
+\]
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.6\textwidth]{haaiengroei.png} 
+    \caption{Groei van haaien in de tijd.}
+    \label{fig:haaiengroei}
+\end{figure}
+
+
+\newpage
+
+%------------------------------------
+% 3. UITBREIDING VAN HET MODEL
+%------------------------------------
+\section{Uitbreiding van het model}
+Uitbreiding van het model
+\newpage
+
+%------------------------------------
+% 4. BEPERKINGEN VAN DE UITBREIDING EN VERVOLGSTAPPEN
+%------------------------------------
+\section{Beperkingen van de uitbreiding en vervolgstappen}
+Bespreek beperkingen  
+\newpage
+
+%------------------------------------
+% 5. CONCLUSIE
+%------------------------------------
+\section{Conclusie}
+Trek de belangrijkste conclusies 
+\newpage
+
+%------------------------------------
+% REFERENTIES
+%------------------------------------
+\begin{thebibliography}{99}
+\addcontentsline{toc}{section}{Referenties}
+
+\bibitem{bertalanffy1934}
+von Bertalanffy, L. (1934). \textit{Untersuchungen über die Gesetzlichkeit des Wachstums}. Roux’ Archiv für Entwicklungsmechanik der Organismen, 131, 613--652.
+
+\bibitem{renner-martin2018}
+Renner-Martin, K., Figueira, W. F., Buckley, L. B., \&amp; Possingham, H. P. (2018). \textit{On the exponent in the von Bertalanffy growth model}. PeerJ, 6, e4205. \url{https://peerj.com/articles/4205/}
+
+\bibitem{bertalanffy1957}
+von Bertalanffy, L. (1957). \textit{Quantitative laws in metabolism and growth}. The Quarterly Review of Biology, 32, 217--231.
+
+\bibitem{pardo2013}
+Pardo, S. A. (2013). \textit{Avoiding fishy growth curves: Accounting for the influence of temperature and growth autocorrelation}. Methods in Ecology and Evolution, 4(2), 202--211. \url{https://doi.org/10.1111/2041-210X.12020}
+
+\bibitem{liu2021}
+Liu, K.-M., et al. (2021). \textit{Multi‑Model Approach on Growth Estimation and Association With Life History Trait for Elasmobranchs}. Frontiers in Marine Science. 
+
+\bibitem{smart2021}
+Smart, J. J., \&amp; Grammer, G. L. (2021). \textit{Modernising fish and shark growth curves with Bayesian length-at-age models}. PLoS ONE, 16(2), e0246734. \url{https://doi.org/10.1371/journal.pone.0246734}
+
+\bibitem{araya2006}
+Araya, M., \&amp; Cubillos, L. A. (2006). \textit{Evidence for two-phase growth in elasmobranchs}. In J. A. Musick \&amp; R. Bonfil (Eds.), Management techniques for elasmobranch fisheries (pp. 243--254). Springer. \url{https://doi.org/10.1007/978-1-4020-5570-6_9}
+
+\bibitem{natanson2006}
+Natanson, L. J., Casey, J. G., Kohler, N. E., \&amp; Pratt, H. L. (2006). \textit{Age and growth of elasmobranch fishes}. In J. C. Carrier, J. A. Musick, \&amp; M. R. Heithaus (Eds.), Biology of sharks and their relatives (pp. 211--225). CRC Press.
+
+\bibitem{first_zd}
+Sea first (z.d.). \textit{Haaien}. {{Sea First.}} Retrieved on 17 November 2025. \url{https://www.seafirst.org/haaien}
+
+\bibitem{rolim2020}
+Rolim, F. A., Crivelli, A. J., \&amp; Oddone, M. C. (2020). \textit{Growth and derived life-history characteristics of the shortfin mako (Isurus oxyrinchus) in the South Atlantic Ocean}. Journal of Fish Biology, 97(3), 826--838. \url{https://doi.org/10.1111/jfb.14378}
+
+\end{thebibliography}
+\newpage
+
+%------------------------------------
+% BIJLAGEN
+%------------------------------------
+\appendix
+\section{Bijlage A: Extra Tabellen / Python code}
+\newpage
+
+\section{Bijlage B: Extra Figuren}
+\newpage
+
+\end{document}
