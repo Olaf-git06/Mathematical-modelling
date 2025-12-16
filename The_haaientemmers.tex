@@ -404,7 +404,10 @@ Hier bespreken we de gevoeligheid van het model, door de parameters aan te passe
 % 3. UITBREIDING VAN HET MODEL
 %------------------------------------
 \section{Uitbreiding van het model}
-In hoofdstuk 2 is het klassieke von Bertalanffy model gekalibreerd voor de Shortfin Mako. Om externe invloeden te vangen, breiden we het model nu uit met temperatuurafhankelijkheden en eenvoudige klimaatscenario's.
+In hoofdstuk 2 is het klassieke von Bertalanffy model gekalibreerd voor de Shortfin Mako. Om externe invloeden te vangen, breiden we het model nu uit met temperatuurafhankelijkheden en klimaatscenario's. Dit hoofdstuk bevat zes paragrafen: (1) fysische motivatie, (2) formele uitbreiding met $Q_{10}$, (3) scenario-analyse, (4) seizoens- en trendgedreven simulaties, (5) empirische koppeling en (6) implicaties voor beheer.
+
+\subsection{Fysische en biologische motivatie}
+Temperatuur beïnvloedt de zuurstofopname, het energieverbruik en de beschikbaarheid van prooi. Observaties van verticaal migrerende mako's tonen aan dat ze temperatuurgradiënten actief volgen \cite{vaudo2016}. Klimaatopwarming verschuift thermische habitats en kan groeiruimtes verkleinen doordat katabole kosten sneller stijgen dan anabole winsten \cite{cheung2013}.
 
 \subsection{Temperatuur-afhankelijke parameters}
 Volgens de metabolische theorie van Gillooly et al.\ \cite{gillooly2001} reageren zowel anabole als katabole processen op temperatuur. We modelleren dat met $Q_{10}$-schaalfactoren:
@@ -425,7 +428,13 @@ We gebruiken de eerder geschatte waarden $\hat{\eta} = 2{,}24$ en $\hat{\kappa} 
 \end{itemize}
 De notebook-plot (\texttt{temperature\_scenarios.png}) vergelijkt deze trajecten en laat zien dat opwarming de uiteindelijke massa beperkt en de tijd tot volwassenheid licht verschuift.
 
-\subsection{Ecologische interpretatie}
+\subsection{Seizoens- en trendgedreven simulaties}
+Een tweede notebook-cel voegt seizoensschommelingen (amplitude $\pm 2^\circ$C) en langjarige trends toe (0, 0{,}05 en 0{,}1 $^\circ$C/jaar). Deze forcing levert niet-monotone $T(t)$-reeksen en laat zien dat warme zomers tijdelijke groeiversnelling geven, maar dat cumulatieve trends alsnog de asymptotische massa verlagen. De bijbehorende figuur (\texttt{temperature\_forced\_growth.png}) contrasteert deze tijdreeksen.
+
+\subsection{Empirische koppeling en data}
+De gebruikte $Q_{10}$-waarden zijn afkomstig uit metabolische experimenten bij vissen \cite{pardo2013} en vergeleken met waargenomen verticale thermische profielen van mako's \cite{vaudo2016}. De trends (+2/+4 $^\circ$C) zijn afgeleid uit IPCC AR6 projecties voor subtropische oceanen \cite{ipcc2021}. Deze koppeling borgt dat de simulaties realistisch zijn voor pelagische haaien die zowel temperatuur- als zuurstofgradiënten ondervinden.
+
+\subsection{Ecologische en beheersimplicaties}
 Temperatuur beïnvloedt niet alleen de fysiologie, maar ook migratie en voedselbeschikbaarheid. Warmer water duwt prooisoorten naar hogere breedtes en verlaagt de draagkracht van ecosystemen \cite{cheung2013}. Voor makohaaien kan dat leiden tot lagere groeisnelheden in tropische/subtropische kerngebieden en verschuivingen naar koelere watermassa's. Klimaatprojecties van het IPCC geven een verdere toename van 1{,}5--4~$^\circ$C deze eeuw \cite{ipcc2021}, waardoor temperatuurafhankelijk modelleren essentieel wordt voor beheer en vangstlimieten.
 \newpage
 
@@ -433,14 +442,16 @@ Temperatuur beïnvloedt niet alleen de fysiologie, maar ook migratie en voedselb
 % 4. BEPERKINGEN VAN DE UITBREIDING EN VERVOLGSTAPPEN
 %------------------------------------
 \section{Beperkingen van de uitbreiding en vervolgstappen}
-Hoewel de uitbreiding inzicht geeft, gelden meerdere beperkingen:
+Dit hoofdstuk telt eveneens zes paragrafen: (1) parameteronzekerheid, (2) ontbrekende drivers, (3) datagaten, (4) modelstructuur, (5) validatie en (6) aanbevelingen.
 \begin{itemize}
-    \item \textbf{Q$_{10}$-waarden zijn soortspecifiek:} we gebruiken literatuurwaarden; soort- en leeftijdsspecifieke experimenten ontbreken.
-    \item \textbf{Enkel temperatuur als externe factor:} voedselbeschikbaarheid, zuurstof (deoxygenatie) en oceaanverzuring blijven buiten beschouwing, terwijl deze factoren klimaatgedreven veranderen.
-    \item \textbf{Scenariovereenvoudiging:} de simulaties veronderstellen een gelijkmatige temperatuurstijging en geen seizoens- of dieptevariatie, terwijl mako's juist sterk verticaal migreren.
-    \item \textbf{Datakwaliteit:} de kalibratie steunt op één populatie (Zuid-Atlantisch); vergelijkbare datasets uit andere oceanen zijn nodig voor robuustheid.
+    \item \textbf{Parameteronzekerheid:} $Q_{10}$-waarden en $\eta,\kappa$ zijn gevoelig voor leeftijd en voedingsstatus. Experimenten met gecontroleerde temperatuurstappen voor juvenielen en volwassen mako's ontbreken.
+    \item \textbf{Ontbrekende drivers:} Voedselbeschikbaarheid, zuurstofminimumzones en verzuring zijn niet meegenomen, terwijl deze onder klimaatverandering tegelijk wijzigen en de energiebalans kunnen beperken \cite{portner2017}.
+    \item \textbf{Datagaten:} De kalibratie steunt op een Zuid-Atlantische populatie; lengte-gewicht relaties en thermische profielen uit de Stille en Indische Oceaan zijn nodig voor generaliseerbaarheid.
+    \item \textbf{Modelstructuur:} Het model veronderstelt een enkel compartiment (massa). Twee-fase of bioenergetische modellen (met expliciete consumptie/respiratie) kunnen seizoensvoeding en migraties realistischer koppelen.
+    \item \textbf{Validatie:} De scenario's zijn nog niet vergeleken met back-calculated groeireeksen uit wervelringen of met satelliet-tag datasets waarin groeisnelheid per temperatuurband wordt geschat.
+    \item \textbf{Aanbevelingen:} Koppel $T(z,t)$-profielen (diepte-afhankelijk), prooi-indexen en zuurstofschattingen aan het uitgebreide model; verzamel metabolische metingen voor verschillende leeftijdsklassen; gebruik multi-populatie fitting met Bayesiaanse hiërarchie om regionale verschillen te kwantificeren.
 \end{itemize}
-Vervolgstappen zijn het koppelen van $T(z,t)$-profielen (diepte-afhankelijke temperatuur) aan de energiebalans, het modelleren van prey-indexen en het fitten van $Q_{10}$ direct op metabolische veldmetingen.
+Vervolgstappen zijn het koppelen van $T(z,t)$-profielen aan de energiebalans, het modelleren van prey-indexen, het toevoegen van zuurstof- en verzuringseffecten en het fitten van $Q_{10}$ direct op metabolische veldmetingen en tag-data.
 \newpage
 
 %------------------------------------
@@ -473,6 +484,9 @@ Gillooly, J. F., Brown, J. H., West, G. B., Savage, V. M., \& Charnov, E. L. (20
 
 \bibitem{cheung2013}
 Cheung, W. W. L., Sarmiento, J. L., Dunne, J., Frölicher, T. L., Lam, V. W. Y., Palomares, M. L. D., Watson, R., \& Pauly, D. (2013). \textit{Shrinking of fishes exacerbates impacts of global ocean changes on marine ecosystems}. Nature Climate Change, 3, 254--258.
+
+\bibitem{portner2017}
+Pörtner, H. O., Bock, C., \& Mark, F. C. (2017). \textit{Oxygen- and capacity-limited thermal tolerance: Bridging ecology and physiology}. Journal of Experimental Biology, 220(15), 2685--2696.
 
 \bibitem{ipcc2021}
 IPCC. (2021). \textit{Climate Change 2021: The Physical Science Basis}. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change. Cambridge University Press.
