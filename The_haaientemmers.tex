@@ -12,6 +12,8 @@
 \usepackage{setspace}
 \usepackage{geometry}
 \usepackage{lipsum} % tijdelijk voor voorbeeldtekst
+\usepackage{newunicodechar}
+\newunicodechar{∗}{\ast}
 
 \geometry{margin=3cm}
 
@@ -38,6 +40,10 @@
 %------------------------------------
 \section*{Voorwoord}
 Voorwoordtekst hier.  
+
+
+                    
+
 \newpage
 
 %------------------------------------
@@ -86,7 +92,7 @@ De constante $ \eta $ is de anabole coëfficiënt. Het geeft aan hoe snel en eff
 De constante $ \kappa $ is de katabole coëfficiënt. Het geeft aan welk deel van de lichaamsmassa per tijdseenheid wordt `verbrand' of afgebroken om in leven te blijven.
 \vspace{5mm}
 
-De kern van het model is dat de verhouding tussen het lichaamsoppervlak en het gewicht van de haai verandert naarnate de haai verjaart. Hierdoor verandert ook de verhouding tussen de opname en het verbruik van de haai.
+De kern van het model is dat de verhouding tussen het lichaamsoppervlak en het gewicht van de haai verandert naarnate de haai veroudert. Hierdoor verandert ook de verhouding tussen de opname en het verbruik van de haai.
 
 
 De kern van dit biologische model is de veranderende verhouding tussen opname en verbruik naarmate de haai ouder wordt.
@@ -121,7 +127,7 @@ $L \propto W^{1/3}$. Aangezien het oppervlak evenredig is met $L^2$, wordt dit
 Daarom verschijnt in de groeivergelijking de exponent $a = \frac{2}{3}$ \cite{bertalanffy1957}
 
 \vspace{5mm}
-In andere bronnen wordt de parameter $a$ ook gekozen als $\tfrac{3}{4}$. Deze waarde komt voort uit een andere redenering:  
+In dezelfde bron wordt de parameter $a$ ook gekozen als $\tfrac{3}{4}$. Deze waarde komt voort uit een andere redenering:  
 In dit model wordt niet gekeken naar massagroei ten opzichte van groei via oppervlakteschaal, maar naar de efficiëntie van het metabolisme van een organisme. Deze efficiëntie is afhankelijk van de massa van het organisme.
 
 Wanneer een organisme een grote massa heeft, is er minder energie nodig per kilogram lichaamsgewicht, doordat het bloedvatenstelsel efficiënter werkt naarmate het organisme groter wordt. Zuurstoftransport en metabolisme bepalen uiteindelijk hoeveel biomassa een organisme kan opbouwen.
@@ -202,6 +208,196 @@ w^* =
 \end{figure}
 
 
+
+\subsection{Analytische oplossing}
+
+We beschouwen de differentiaalvergelijking
+\[
+\frac{dw}{dt} = \eta w^{a} - \kappa w,
+\]
+waarbij \(0 < a < 1\). Om deze vergelijking op te lossen herschrijven we eerst:
+\[
+\frac{dw}{\eta w^{a} - \kappa w} = dt.
+\]
+
+Stel vervolgens
+\[
+u = w^{\,1-a}.
+\]
+Hieruit volgt
+\[
+du = (1-a) w^{-a} \, dw,
+\]
+zodat de vergelijking herschreven kan worden als
+\[
+\frac{du}{\eta - \kappa u} = (1-a)\, dt.
+\]
+
+Beiden kanten integreren geeft
+\[
+- \frac{1}{\kappa} \ln\!\left| \eta - \kappa u \right|
+= (1-a)t + C.
+\]
+
+Exponentiëren en terugsubstitueren \(u = w^{1-a}\) geeft
+\[
+\eta - \kappa w^{1-a} 
+= C_1 e^{-(1-a)\kappa t}.
+\]
+
+Met de beginvoorwaarde \(w(0) = w_0\) volgt
+\[
+C_1 = \eta - \kappa w_0^{\,1-a}.
+\]
+
+Hieruit wordt de algemene oplossing gevonden:
+\[
+\boxed{
+w(t) = 
+\left(
+\frac{\eta}{\kappa}
+-
+\left(
+\frac{\eta}{\kappa}
+- w_0^{\,1-a}
+\right)
+e^{-(1-a)\kappa t}
+\right)^{\frac{1}{1-a}}
+}
+\]
+
+\subsubsection*{Speciale gevallen \(a = \tfrac{2}{3}\) en \(a = \tfrac{3}{4}\)}
+
+Voor de eerder gekozen waarden van \(a\) verkrijgen we:
+
+\[
+w(t) =
+\begin{cases}
+\left(
+\dfrac{\eta}{\kappa}
+-
+\left(
+\dfrac{\eta}{\kappa}
+- w_0^{3}
+\right)
+e^{-\frac{\kappa}{3} t}
+\right)^3, 
+& a = \tfrac{2}{3}, \\[12pt]
+\left(
+\dfrac{\eta}{\kappa}
+-
+\left(
+\dfrac{\eta}{\kappa}
+- w_0^{4}
+\right)
+e^{-\frac{\kappa}{4} t}
+\right)^4,
+& a = \tfrac{3}{4}.
+\end{cases}
+\vspace{20mm}
+\]
+
+% Limiet sectie staat nu los onder de subsubsection
+Vervolgens wordt de limiet van \(t \to \infty\) gevonden (waar het gewicht uiteindelijk naartoe nadert: het evenwichtsgewicht). Hieruit volgt:
+\[
+\lim_{t \to \infty} 
+\left(
+\frac{\eta}{\kappa}
+-
+\left(
+\frac{\eta}{\kappa} - w_0^{\,1-a}
+\right)
+e^{-(1-a)\kappa t}
+\right)^{\frac{1}{1-a}}.
+\]
+
+Merk op dat de factor 
+\[
+\lim_{t \to \infty} e^{-(1-a)\kappa t} = 0.
+\]
+
+Wat overblijft is:
+\[
+w(t) \;\longrightarrow\;
+\left(
+\frac{\eta}{\kappa}
+-
+\left(
+\frac{\eta}{\kappa} - w_0^{\,1-a}
+\right)\cdot 0
+\right)^{\frac{1}{1-a}}
+=
+\left( \frac{\eta}{\kappa} \right)^{\frac{1}{1-a}}.
+\]
+
+Hiermee wordt het evenwichtsgewicht gevonden:
+\[
+w_{\text{evenwicht}} = 
+\left( \frac{\eta}{\kappa} \right)^{\frac{1}{1-a}}.
+\]
+Deze komen overeen met de gevonden evenwichtsoplossingen.
+
+\vspace{20mm}
+
+\subsection{fase line en direction field}
+Hier zetten we een plaatje van de direction field, zodat we kunnen zien dat de haaiengroei naaar de evenwichtsoplossing toegaat. En dt we kunnen zien dat de haai aan het begin groeit en steeds langzamer groeit.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{faselijn.png}
+    \caption{ Fase-lijn van de mate van verandering uitgezet tegen de massa}
+
+    \label{fig:voorbeeld}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{direction field.png}
+    \caption{Richtingsveld voor de von Bertalanffy groeivergelijking met een numerieke
+oplossing (blauwe curve) en de evenwichtsoplossing w∗ (rode stippellijn).}
+    \label{fig:voorbeeld}
+\end{figure}
+fase lijn kunnen we ook kijken naar de stabiliteit van de evenwichtoplossing.
+
+\vspace{20mm}
+
+
+\subsection{case study shortfin mako haai}
+
+Om een praktische controle uit te kunnen voeren op het theoretische model, wordt er gebruik gemaakt van bekende gegevens over de Mako haai \cite{rolim2020}. Dit onderzoek heeft zich verdiept in de groei van de Isurus oxyrinchus (shortfin mako). 
+De studie analyseert data van de visserij op zwaardvis, waarbij er (voor de kust van Chili) tussen 2004 en 2005 547 mako haaien zijn gevangen. De lengte van de gevangen haaien varieerde van 76 tot 330 cm. 
+Voor de leeftijdsbepaling hebben onderzoekers delen van de wervelkolom genomen, deze vervolgens gerepareerd, en ten slotte met een microscoop band-paren geteld. Zij gingen uit van de interpretatie dat er één band paar per jaar wordt gevormd. Op basis van deze informatie werd er geschat dat de maximale leeftijd van de shortfin mako haai ± 25 jaar is. 
+
+De onderzoekers modelleerden vervolgens de groei met een groeicurve volgens het 
+\emph{Von Bertalanffy Growth Model} (VBGM). 
+Het model volgt de formule:
+
+\[
+L(t) = L_{\infty}\left(1 - e^{-K(t - t_0)}\right),
+\]
+
+waarbij $L(t)$ de totale lengte (in cm) op leeftijd $t$ voorstelt, $L_{\infty}$ de 
+asymptotische (maximaal benaderbare) lengte is, $K$ de groeisnelheidscoëfficiënt, en 
+$t_0$ het theoretische tijdstip waarop de lengte nul zou zijn.
+
+Voor haaien van het vrouwelijke geslacht schatten zij de parameters als:
+\[
+L_{\infty} = 325.29~\text{cm}, \quad K = 0.076~\text{jaar}^{-1}, \quad t_0 = -3.18~\text{jaar}.
+\]
+
+Voor haaien van het mannelijke geslacht resulteerden de volgende schattingen:
+\[
+L_{\infty} = 296.60~\text{cm}, \quad K = 0.087~\text{jaar}^{-1}, \quad t_0 = -3.58~\text{jaar}.
+\]
+
+
+De studie concludeerde dat de shortfin mako haai in dit gebied traag groeit. Echter, de haai groeit in zijn jonge jaren harder dan op het moment dat die volwassen wordt. 
+\vspace{20mm}
+
+\subsection{gevoeligheids analyse parameters}
+Hier bespreken we de gevoeligheid van het model, door de parameters aan te passen. Dan kijken we aan de hand van plots wat voor resultaat de aanpassing van de parameters geeft. Dit helpt om uiteindelijk in hoofdstuk 3 de parameters vinden die realistisch zijn/ de data het beste fit.
+
+
+
 \newpage
 
 %------------------------------------
@@ -255,11 +451,19 @@ Araya, M., \&amp; Cubillos, L. A. (2006). \textit{Evidence for two-phase growth 
 \bibitem{natanson2006}
 Natanson, L. J., Casey, J. G., Kohler, N. E., \&amp; Pratt, H. L. (2006). \textit{Age and growth of elasmobranch fishes}. In J. C. Carrier, J. A. Musick, \&amp; M. R. Heithaus (Eds.), Biology of sharks and their relatives (pp. 211--225). CRC Press.
 
+\bibitem{vaudo2016}
+Vaudo, J., Wetherbee, B., Wood, A., Weng, K., Howey-Jordan, L., Harvey, G., \& Shivji, M. (2016). \textit{Vertical movements of shortfin mako sharks Isurus oxyrinchus in the western North Atlantic Ocean are strongly influenced by temperature}. \textit{Marine Ecology Progress Series}, \textit{547}, 163--175. https://doi.org/10.3354/meps11646
+
+
+
+‌
+
+
 \bibitem{first_zd}
 Sea first (z.d.). \textit{Haaien}. {{Sea First.}} Retrieved on 17 November 2025. \url{https://www.seafirst.org/haaien}
 
 \bibitem{rolim2020}
-Rolim, F. A., Crivelli, A. J., \&amp; Oddone, M. C. (2020). \textit{Growth and derived life-history characteristics of the shortfin mako (Isurus oxyrinchus) in the South Atlantic Ocean}. Journal of Fish Biology, 97(3), 826--838. \url{https://doi.org/10.1111/jfb.14378}
+Rolim, F. A., Crivelli, A. J., \&amp; Oddone, M. C. (2020). \textit{Growth and derived life-history characteristics of the shortfin mako (Isurus oxyrinchus) in the South Atlantic Ocean}. Journal of Fish Biology, 97(3), 826--838.\url{https://www.researchgate.net/publication/240506683_Age_and_growth_of_the_shortfin_mako_Isurus_oxyrinchus_in_the_south-eastern_Pacific_off_Chile }
 
 \end{thebibliography}
 \newpage
@@ -273,5 +477,7 @@ Rolim, F. A., Crivelli, A. J., \&amp; Oddone, M. C. (2020). \textit{Growth and d
 
 \section{Bijlage B: Extra Figuren}
 \newpage
-
+Hoe kan de groei van de Shortfin Mako haai worden gemodelleerd met het von Bertalanffy groeimodel, en welke parameters zijn nodig om het model te optimaliseren en overeen te laten komen met waargenomen data?”
+\vspace{5mm}
+“In welke mate beïnvloeden factoren zoals watertemperatuur de groei van de shortfin mako haai, en hoe kan dit proces nauwkeurig worden beschreven met een (uitgebreid) von Bertalanffy-groeimodel?” 
 \end{document}
