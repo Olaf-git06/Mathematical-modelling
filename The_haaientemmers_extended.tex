@@ -430,21 +430,50 @@ De fit toont een goede overeenkomst tussen het model en de data, met een coeffic
 % 3. UITBREIDING VAN HET MODEL
 %------------------------------------
 \section{Uitbreiding van het model}
-Uitbreiding van het model
+In hoofdstuk 2 is het klassieke von Bertalanffy model gekalibreerd voor de Shortfin Mako. Om externe invloeden te vangen, breiden we het model nu uit met temperatuurafhankelijkheden en eenvoudige klimaatscenario's.
+
+\subsection{Temperatuur-afhankelijke parameters}
+Volgens de metabolische theorie van Gillooly et al.\ \cite{gillooly2001} reageren zowel anabole als katabole processen op temperatuur. We modelleren dat met $Q_{10}$-schaalfactoren:
+\begin{equation}
+    \frac{dw}{dt} = \eta\, f_T(T)\, w^{2/3} - \kappa\, g_T(T)\, w,
+    \qquad
+    f_T(T) = Q_{10,a}^{\tfrac{T-T_{\mathrm{ref}}}{10}}, \quad
+    g_T(T) = Q_{10,k}^{\tfrac{T-T_{\mathrm{ref}}}{10}}.
+\end{equation}
+Voor haaien liggen $Q_{10,a}$ typisch rond 2{,}0 (voedselopname) en $Q_{10,k}$ rond 2{,}3--2{,}6 (onderhoudsmetabolisme) \cite{pardo2013}. Omdat katabolisme sneller stijgt dan anabolisme bij hogere temperaturen, daalt de evenwichtsmassa.
+
+\subsection{Klimaatscenario's voor de Shortfin Mako}
+We gebruiken de eerder geschatte waarden $\hat{\eta} = 2{,}24$ en $\hat{\kappa} = 0{,}30$ (sectie 2.6) met $T_{\mathrm{ref}} = 18\,^\circ$C. Een nieuwe Python-cel in het notebook simuleert drie scenario's (constante temperatuur, +2~$^\circ$C en +4~$^\circ$C) met $Q_{10,a}=2{,}0$ en $Q_{10,k}=2{,}5$:
+\begin{itemize}
+    \item \textbf{Huidige omstandigheden:} $w^* \approx 417$~kg.
+    \item \textbf{+2~$^\circ$C (2050-scenario):} $w^* \approx 364$~kg ($\sim$12\% lager), terwijl de groei naar 200~kg iets sneller verloopt door hogere metabolische flux.
+    \item \textbf{+4~$^\circ$C (eind 21e eeuw):} $w^* \approx 318$~kg ($\sim$24\% lager) en de groeicurve vlakt eerder af.
+\end{itemize}
+De notebook-plot (\texttt{temperature\_scenarios.png}) vergelijkt deze trajecten en laat zien dat opwarming de uiteindelijke massa beperkt en de tijd tot volwassenheid licht verschuift.
+
+\subsection{Ecologische interpretatie}
+Temperatuur beïnvloedt niet alleen de fysiologie, maar ook migratie en voedselbeschikbaarheid. Warmer water duwt prooisoorten naar hogere breedtes en verlaagt de draagkracht van ecosystemen \cite{cheung2013}. Voor makohaaien kan dat leiden tot lagere groeisnelheden in tropische/subtropische kerngebieden en verschuivingen naar koelere watermassa's. Klimaatprojecties van het IPCC geven een verdere toename van 1{,}5--4~$^\circ$C deze eeuw \cite{ipcc2021}, waardoor temperatuurafhankelijk modelleren essentieel wordt voor beheer en vangstlimieten.
 \newpage
 
 %------------------------------------
 % 4. BEPERKINGEN VAN DE UITBREIDING EN VERVOLGSTAPPEN
 %------------------------------------
 \section{Beperkingen van de uitbreiding en vervolgstappen}
-Bespreek beperkingen  
+Hoewel de uitbreiding inzicht geeft, gelden meerdere beperkingen:
+\begin{itemize}
+    \item \textbf{Q$_{10}$-waarden zijn soortspecifiek:} we gebruiken literatuurwaarden; soort- en leeftijdsspecifieke experimenten ontbreken.
+    \item \textbf{Enkel temperatuur als externe factor:} voedselbeschikbaarheid, zuurstof (deoxygenatie) en oceaanverzuring blijven buiten beschouwing, terwijl deze factoren klimaatgedreven veranderen.
+    \item \textbf{Scenariovereenvoudiging:} de simulaties veronderstellen een gelijkmatige temperatuurstijging en geen seizoens- of dieptevariatie, terwijl mako's juist sterk verticaal migreren.
+    \item \textbf{Datakwaliteit:} de kalibratie steunt op één populatie (Zuid-Atlantisch); vergelijkbare datasets uit andere oceanen zijn nodig voor robuustheid.
+\end{itemize}
+Vervolgstappen zijn het koppelen van $T(z,t)$-profielen (diepte-afhankelijke temperatuur) aan de energiebalans, het modelleren van prey-indexen en het fitten van $Q_{10}$ direct op metabolische veldmetingen.
 \newpage
 
 %------------------------------------
 % 5. CONCLUSIE
 %------------------------------------
 \section{Conclusie}
-Trek de belangrijkste conclusies 
+Het uitgebreid von Bertalanffy model laat zien dat temperatuurstijging zowel de groeisnelheid als de uiteindelijke massa van makohaaien beïnvloedt. Op basis van $Q_{10}$-schaalregels daalt $w^*$ met circa 12\% bij +2~$^\circ$C en 24\% bij +4~$^\circ$C, terwijl de tijd tot volwassen massa slechts beperkt versnelt. Deze resultaten onderstrepen dat klimaatverandering niet alleen verspreiding, maar ook individuele groei en daarmee populatiedynamiek van haaien raakt. Voor beheer betekent dit dat temperatuurscenario's expliciet in vangstadviezen en beschermingsplannen moeten worden meegenomen.
 \newpage
 
 %------------------------------------
@@ -464,6 +493,15 @@ von Bertalanffy, L. (1957). \textit{Quantitative laws in metabolism and growth}.
 
 \bibitem{pardo2013}
 Pardo, S. A. (2013). \textit{Avoiding fishy growth curves: Accounting for the influence of temperature and growth autocorrelation}. Methods in Ecology and Evolution, 4(2), 202--211. \url{https://doi.org/10.1111/2041-210X.12020}
+
+\bibitem{gillooly2001}
+Gillooly, J. F., Brown, J. H., West, G. B., Savage, V. M., \& Charnov, E. L. (2001). \textit{Effects of size and temperature on metabolic rate}. Science, 293(5538), 2248--2251.
+
+\bibitem{cheung2013}
+Cheung, W. W. L., Sarmiento, J. L., Dunne, J., Frölicher, T. L., Lam, V. W. Y., Palomares, M. L. D., Watson, R., \& Pauly, D. (2013). \textit{Shrinking of fishes exacerbates impacts of global ocean changes on marine ecosystems}. Nature Climate Change, 3, 254--258.
+
+\bibitem{ipcc2021}
+IPCC. (2021). \textit{Climate Change 2021: The Physical Science Basis}. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change. Cambridge University Press.
 
 \bibitem{liu2021}
 Liu, K.-M., et al. (2021). \textit{Multi‑Model Approach on Growth Estimation and Association With Life History Trait for Elasmobranchs}. Frontiers in Marine Science. 
