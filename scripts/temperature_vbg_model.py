@@ -1044,12 +1044,12 @@ if __name__ == "__main__":
         print("\n" + "=" * 60)
         print("Climate Change Impact Projections")
         print("=" * 60)
-        T_current = 18.0
-        w_current = asymptotic_mass_temp(eta0, kappa0, T_current, Q10_A, Q10_B)
+        T_current = T_REF  # Use module constant for consistency
+        w_current = asymptotic_mass_temp(eta0, kappa0, T_current, Q10_A, Q10_B, T_REF)
         
         for delta_T, scenario in [(0, "Current"), (2, "2050 (+2°C)"), (4, "2100 (+4°C)")]:
             T = T_current + delta_T
-            w = asymptotic_mass_temp(eta0, kappa0, T, Q10_A, Q10_B)
+            w = asymptotic_mass_temp(eta0, kappa0, T, Q10_A, Q10_B, T_REF)
             change = (w - w_current) / w_current * 100
             print(f"  {scenario:18s}: w* = {w:7.1f} kg ({change:+6.1f}%)")
         
