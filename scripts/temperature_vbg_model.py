@@ -497,121 +497,127 @@ def simulate_growth_variable_temp(w0: float, times: np.ndarray,
 # Model Fitting Functions
 # =============================================================================
 
-def predict_recapture_mass_S(params: np.ndarray, data: pd.DataFrame,
-                             T_ref: float = T_REF) -> np.ndarray:
+def predict_mass_at_age_S(params: np.ndarray, data: pd.DataFrame,
+                          w0: float = 2.5, T_ref: float = T_REF) -> np.ndarray:
     """
-    Predict recapture mass for all observations using Model S.
+    Predict mass at observed age for all observations using Model S.
+    
+    Uses age-at-capture data from literature sources. Assumes birth mass w0
+    and integrates growth from age 0 to observed age.
     
     Parameters
     ----------
     params : array-like
         [eta0, kappa0, Q10]
     data : DataFrame
-        Must contain: mass_release_kg, delta_t_years, mean_temp_C
+        Must contain: age_years, mean_sst_C
+    w0 : float
+        Birth mass (kg), default 2.5 kg for mako sharks
     T_ref : float
         Reference temperature (°C)
         
     Returns
     -------
     w_pred : ndarray
-        Predicted recapture mass (kg)
+        Predicted mass at observed age (kg)
     """
     eta0, kappa0, Q10 = params
     
     w_pred = np.zeros(len(data))
     
-    for i, row in data.iterrows():
-        w0 = row['mass_release_kg']
-        dt = row['delta_t_years']
-        T = row['mean_temp_C']
+    for idx, (i, row) in enumerate(data.iterrows()):
+        age = row['age_years']
+        T = row['mean_sst_C']
         
         # Use analytical solution with temperature-adjusted parameters
         eta_T = eta0 * q10_scale(T, T_ref, Q10)
         kappa_T = kappa0 * q10_scale(T, T_ref, Q10)
         
-        w_pred[i] = vbg_analytical(dt, eta_T, kappa_T, w0)
+        w_pred[idx] = vbg_analytical(age, eta_T, kappa_T, w0)
     
     return w_pred
 
 
-def predict_recapture_mass_D(params: np.ndarray, data: pd.DataFrame,
-                             T_ref: float = T_REF) -> np.ndarray:
+def predict_mass_at_age_D(params: np.ndarray, data: pd.DataFrame,
+                          w0: float = 2.5, T_ref: float = T_REF) -> np.ndarray:
     """
-    Predict recapture mass for all observations using Model D.
+    Predict mass at observed age for all observations using Model D.
+    
+    Uses age-at-capture data from literature sources. Assumes birth mass w0
+    and integrates growth from age 0 to observed age.
     
     Parameters
     ----------
     params : array-like
         [eta0, kappa0, Q10_A, Q10_B]
     data : DataFrame
-        Must contain: mass_release_kg, delta_t_years, mean_temp_C
+        Must contain: age_years, mean_sst_C
+    w0 : float
+        Birth mass (kg), default 2.5 kg for mako sharks
     T_ref : float
         Reference temperature (°C)
         
     Returns
     -------
     w_pred : ndarray
-        Predicted recapture mass (kg)
+        Predicted mass at observed age (kg)
     """
     eta0, kappa0, Q10_A, Q10_B = params
     
     w_pred = np.zeros(len(data))
     
-    for i, row in data.iterrows():
-        w0 = row['mass_release_kg']
-        dt = row['delta_t_years']
-        T = row['mean_temp_C']
+    for idx, (i, row) in enumerate(data.iterrows()):
+        age = row['age_years']
+        T = row['mean_sst_C']
         
         # Use analytical solution with temperature-adjusted parameters
         eta_T = eta0 * q10_scale(T, T_ref, Q10_A)
         kappa_T = kappa0 * q10_scale(T, T_ref, Q10_B)
         
-        w_pred[i] = vbg_analytical(dt, eta_T, kappa_T, w0)
+        w_pred[idx] = vbg_analytical(age, eta_T, kappa_T, w0)
     
     return w_pred
 
 
 def residuals_model_S(params: np.ndarray, data: pd.DataFrame,
-                      T_ref: float = T_REF) -> np.ndarray:
+                      w0: float = 2.5, T_ref: float = T_REF) -> np.ndarray:
     """Compute residuals for Model S fitting."""
-    w_pred = predict_recapture_mass_S(params, data, T_ref)
-    w_obs = data['mass_recapture_kg'].values
+    w_pred = predict_mass_at_age_S(params, data, w0, T_ref)
+    w_obs = data['mass_kg'].values
     return w_pred - w_obs
 
 
 def residuals_model_D(params: np.ndarray, data: pd.DataFrame,
-                      T_ref: float = T_REF) -> np.ndarray:
+                      w0: float = 2.5, T_ref: float = T_REF) -> np.ndarray:
     """Compute residuals for Model D fitting."""
-    w_pred = predict_recapture_mass_D(params, data, T_ref)
-    w_obs = data['mass_recapture_kg'].values
+    w_pred = predict_mass_at_age_D(params, data, w0, T_ref)
+    w_obs = data['mass_kg'].values
     return w_pred - w_obs
 
 
 def fit_model_S(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
-                bounds: Optional[Tuple] = None, T_ref: float = T_REF) -> Dict[str, Any]:
+                bounds: Optional[Tuple] = None, w0: float = 2.5,
+                T_ref: float = T_REF) -> Dict[str, Any]:
     """
     Fit Model S (single Q10) using nonlinear least squares.
     
     Parameters
     ----------
     data : DataFrame
-        Growth data with required columns
+        Growth data with columns: age_years, mass_kg, mean_sst_C
     x0 : array-like, optional
         Initial parameter guess [eta0, kappa0, Q10]
     bounds : tuple, optional
         Parameter bounds ((lower,), (upper,))
+    w0 : float
+        Birth mass (kg)
     T_ref : float
         Reference temperature (°C)
         
     Returns
     -------
     result : dict
-        Dictionary containing:
-        - params: fitted parameters [eta0, kappa0, Q10]
-        - residuals: residual vector
-        - sse: sum of squared errors
-        - r_squared: coefficient of determination
-        - predictions: predicted recapture masses
+        Dictionary containing fitted parameters and diagnostics
     """
     if x0 is None:
         x0 = np.array([2.5, 0.3, 2.0])
@@ -623,7 +629,7 @@ def fit_model_S(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
         fun=residuals_model_S,
         x0=x0,
         bounds=bounds,
-        args=(data, T_ref),
+        args=(data, w0, T_ref),
         method='trf'
     )
     
@@ -631,11 +637,11 @@ def fit_model_S(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
     residuals = result.fun
     sse = np.sum(residuals ** 2)
     
-    w_obs = data['mass_recapture_kg'].values
+    w_obs = data['mass_kg'].values
     ss_tot = np.sum((w_obs - np.mean(w_obs)) ** 2)
     r_squared = 1.0 - sse / ss_tot
     
-    w_pred = predict_recapture_mass_S(params, data, T_ref)
+    w_pred = predict_mass_at_age_S(params, data, w0, T_ref)
     
     # Calculate AIC and BIC
     n = len(data)
@@ -662,30 +668,28 @@ def fit_model_S(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
 
 
 def fit_model_D(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
-                bounds: Optional[Tuple] = None, T_ref: float = T_REF) -> Dict[str, Any]:
+                bounds: Optional[Tuple] = None, w0: float = 2.5,
+                T_ref: float = T_REF) -> Dict[str, Any]:
     """
     Fit Model D (dual Q10) using nonlinear least squares.
     
     Parameters
     ----------
     data : DataFrame
-        Growth data with required columns
+        Growth data with columns: age_years, mass_kg, mean_sst_C
     x0 : array-like, optional
         Initial parameter guess [eta0, kappa0, Q10_A, Q10_B]
     bounds : tuple, optional
         Parameter bounds ((lower,), (upper,))
+    w0 : float
+        Birth mass (kg)
     T_ref : float
         Reference temperature (°C)
         
     Returns
     -------
     result : dict
-        Dictionary containing:
-        - params: fitted parameters [eta0, kappa0, Q10_A, Q10_B]
-        - residuals: residual vector
-        - sse: sum of squared errors
-        - r_squared: coefficient of determination
-        - predictions: predicted recapture masses
+        Dictionary containing fitted parameters and diagnostics
     """
     if x0 is None:
         x0 = np.array([2.5, 0.3, 2.0, 2.5])
@@ -697,7 +701,7 @@ def fit_model_D(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
         fun=residuals_model_D,
         x0=x0,
         bounds=bounds,
-        args=(data, T_ref),
+        args=(data, w0, T_ref),
         method='trf'
     )
     
@@ -705,11 +709,11 @@ def fit_model_D(data: pd.DataFrame, x0: Optional[np.ndarray] = None,
     residuals = result.fun
     sse = np.sum(residuals ** 2)
     
-    w_obs = data['mass_recapture_kg'].values
+    w_obs = data['mass_kg'].values
     ss_tot = np.sum((w_obs - np.mean(w_obs)) ** 2)
     r_squared = 1.0 - sse / ss_tot
     
-    w_pred = predict_recapture_mass_D(params, data, T_ref)
+    w_pred = predict_mass_at_age_D(params, data, w0, T_ref)
     
     # Calculate AIC and BIC
     n = len(data)
@@ -900,6 +904,9 @@ def load_growth_data(filepath: str) -> pd.DataFrame:
     """
     Load mako shark growth data from CSV file.
     
+    The data file should contain age-at-capture data from literature sources
+    with temperature assignments for each region.
+    
     Parameters
     ----------
     filepath : str
@@ -909,15 +916,16 @@ def load_growth_data(filepath: str) -> pd.DataFrame:
     -------
     data : DataFrame
         Growth data with required columns
+        
+    Notes
+    -----
+    Required columns: shark_id, age_years, mass_kg, mean_sst_C
+    Optional columns: length_cm, sex, region, source
     """
-    data = pd.read_csv(filepath)
+    data = pd.read_csv(filepath, comment='#')
     
     # Validate required columns
-    required_cols = [
-        'shark_id', 'age_release', 'age_recapture',
-        'mass_release_kg', 'mass_recapture_kg',
-        'delta_t_years', 'mean_temp_C'
-    ]
+    required_cols = ['shark_id', 'age_years', 'mass_kg', 'mean_sst_C']
     
     missing = [col for col in required_cols if col not in data.columns]
     if missing:
@@ -983,18 +991,33 @@ if __name__ == "__main__":
     print("Temperature-Dependent Von Bertalanffy Growth Model")
     print("Shortfin Mako Shark (Isurus oxyrinchus)")
     print("=" * 60)
+    print("\nData Sources:")
+    print("  - Rolim et al. (2020): South Atlantic population")
+    print("  - Natanson et al. (2006): North Atlantic population")
+    print("  - Ribot-Carballal et al. (2005): Eastern Pacific (Baja California)")
+    print("  - Cerna & Licandeo (2009): Southeast Pacific (Chile)")
     
     try:
         data = load_growth_data(data_path)
-        print(f"\nLoaded {len(data)} observations from {data_path}")
+        print(f"\nLoaded {len(data)} observations from published literature")
+        
+        # Show data summary by region
+        if 'region' in data.columns:
+            print("\nObservations by region:")
+            for region in data['region'].unique():
+                n = len(data[data['region'] == region])
+                temp = data[data['region'] == region]['mean_sst_C'].iloc[0]
+                print(f"  {region}: {n} observations (SST = {temp}°C)")
         
         # Fit Model S
-        print("\nFitting Model S (single Q10)...")
+        print("\n" + "-" * 60)
+        print("Fitting Model S (single Q10)...")
         result_S = fit_model_S(data)
         print_fit_summary(result_S, "Model S (Single Q10)")
         
         # Fit Model D
-        print("\nFitting Model D (dual Q10)...")
+        print("\n" + "-" * 60)
+        print("Fitting Model D (dual Q10)...")
         result_D = fit_model_D(data)
         print_fit_summary(result_D, "Model D (Dual Q10)")
         
@@ -1017,12 +1040,25 @@ if __name__ == "__main__":
         for T, w, change in zip(sens['temperature'], sens['w_star'], sens['relative_change_percent']):
             print(f"  T = {T:5.1f}°C: w* = {w:7.1f} kg ({change:+6.1f}%)")
         
+        # Climate scenario projections
+        print("\n" + "=" * 60)
+        print("Climate Change Impact Projections")
+        print("=" * 60)
+        T_current = 18.0
+        w_current = asymptotic_mass_temp(eta0, kappa0, T_current, Q10_A, Q10_B)
+        
+        for delta_T, scenario in [(0, "Current"), (2, "2050 (+2°C)"), (4, "2100 (+4°C)")]:
+            T = T_current + delta_T
+            w = asymptotic_mass_temp(eta0, kappa0, T, Q10_A, Q10_B)
+            change = (w - w_current) / w_current * 100
+            print(f"  {scenario:18s}: w* = {w:7.1f} kg ({change:+6.1f}%)")
+        
     except FileNotFoundError:
         print(f"\nData file not found: {data_path}")
         print("Please ensure the data file exists.")
         
-        # Demo with synthetic example
-        print("\nRunning demo with example parameters...")
+        # Demo with literature-based example
+        print("\nRunning demo with literature parameters...")
         eta0, kappa0 = 2.24, 0.30
         Q10_A, Q10_B = 2.0, 2.5
         
