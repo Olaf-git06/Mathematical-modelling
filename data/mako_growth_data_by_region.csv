@@ -11,14 +11,14 @@
 # REGIONS INCLUDED (sorted alphabetically):
 # - China (Hsu 2003)
 # - Pacific_Australia (Chan 2001)
-# - Pacific_Baja (Ribot-Carballal et al. 2005)
-# - Pacific_California (Cailliet and Bedford 1983)
-# - Pacific_Chile (Cerna and Licandeo 2009)
-# - Pacific_New_Zealand (Bishop et al. 2006) - Males only (female parameters unrealistic)
-# - Southwest_SA (Doño et al. 2014)
+# - Pacific_Baja (Ribot_Carballal 2005)
+# - Pacific_California (Cailliet_Bedford 1983)
+# - Pacific_Chile (Cerna_Licandeo 2009)
+# - Pacific_New_Zealand (Bishop 2006) - Males only (female parameters unrealistic)
+# - Southwest_SA (Dono 2014)
 # - West_and_Central_SA (This study - fit1)
-# - Western_NA (Pratt and Casey 1983, Natanson et al. 2006)
-# - Western_and_Central_NP (Semba et al. 2009)
+# - Western_NA (Pratt_Casey 1983, Natanson 2006)
+# - Western_and_Central_NP (Semba 2009)
 #
 # GROWTH EQUATIONS:
 # - Von Bertalanffy with t0: L(t) = L_inf * (1 - exp(-k * (t - t0)))
@@ -31,6 +31,9 @@
 # - Data points include realistic measurement noise (±3% CV)
 # - Ages derived from realistic age distributions based on longevity data
 # - Female Pacific_New_Zealand excluded due to unrealistic Linf (820.1 cm)
+# - Older sharks near asymptotic length may show similar sizes due to growth curve plateau
+#
+# GENERATION SCRIPT: scripts/generate_region_dataset.py
 #
 shark_id,age_years,length_FL_cm,mass_kg,sex,region,source_study,L_inf_cm,K_per_year,t0_or_L0,value_type
 C_F001,4.5,139.4,23.8,F,China,Hsu_2003,403.62,0.04,-5.27,t0
@@ -64,9 +67,9 @@ C_F028,36.0,320.2,323.9,F,China,Hsu_2003,403.62,0.04,-5.27,t0
 C_F029,36.5,327.4,347.5,F,China,Hsu_2003,403.62,0.04,-5.27,t0
 C_F030,37.0,322.7,332.0,F,China,Hsu_2003,403.62,0.04,-5.27,t0
 C_F031,37.0,337.7,382.7,F,China,Hsu_2003,403.62,0.04,-5.27,t0
-C_F032,43.5,346.4,414.7,F,China,Hsu_2003,403.62,0.04,-5.27,t0
-C_F033,52.5,346.4,414.7,F,China,Hsu_2003,403.62,0.04,-5.27,t0
-C_F034,64.5,346.4,414.7,F,China,Hsu_2003,403.62,0.04,-5.27,t0
+C_F032,43.5,351.6,434.7,F,China,Hsu_2003,403.62,0.04,-5.27,t0
+C_F033,52.5,362.1,476.8,F,China,Hsu_2003,403.62,0.04,-5.27,t0
+C_F034,64.5,336.8,379.5,F,China,Hsu_2003,403.62,0.04,-5.27,t0
 C_M001,0.5,74.4,3.3,M,China,Hsu_2003,321.8,0.04,-6.07,t0
 C_M002,0.5,72.6,3.1,M,China,Hsu_2003,321.8,0.04,-6.07,t0
 C_M003,0.5,79.0,4.0,M,China,Hsu_2003,321.8,0.04,-6.07,t0
@@ -127,13 +130,13 @@ PB_F011,17.5,253.5,155.5,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_F012,20.0,261.8,172.2,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_F013,21.5,274.3,199.2,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_F014,22.5,266.5,182.0,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F015,24.0,290.4,238.4,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F016,25.5,290.4,238.4,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F017,26.5,280.7,214.1,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F018,28.0,290.4,238.4,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F019,28.0,290.4,238.4,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F020,28.5,290.4,238.4,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_F021,28.5,290.4,238.4,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F015,24.0,291.5,241.2,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F016,25.5,297.7,257.6,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F017,26.5,274.7,200.1,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F018,28.0,284.7,224.0,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F019,28.0,285.4,225.7,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F020,28.5,292.7,244.3,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_F021,28.5,282.5,218.7,F,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_M001,1.5,102.6,9.1,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_M002,4.0,129.3,18.8,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_M003,6.5,161.0,37.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
@@ -145,16 +148,16 @@ PB_M008,12.0,204.5,79.2,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_M009,14.0,227.0,110.1,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_M010,17.5,249.2,147.5,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PB_M011,20.0,273.9,198.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M012,23.5,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M013,24.0,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M014,25.5,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M015,26.0,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M016,27.0,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M017,29.0,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M018,31.5,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M019,35.0,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M020,38.0,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
-PB_M021,42.5,290.4,238.4,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M012,23.5,293.1,245.3,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M013,24.0,294.2,248.2,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M014,25.5,302.0,269.6,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M015,26.0,289.3,235.6,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M016,27.0,287.9,231.9,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M017,29.0,296.9,255.6,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M018,31.5,290.3,238.0,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M019,35.0,275.9,203.0,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M020,38.0,293.3,245.9,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
+PB_M021,42.5,271.5,192.9,M,Pacific_Baja,Ribot_Carballal_2005,375.4,0.05,-4.7,t0
 PC_F001,2.0,92.2,6.5,F,Pacific_California,Cailliet_Bedford_1983,298.0,0.07,-3.75,t0
 PC_F002,5.0,141.8,25.1,F,Pacific_California,Cailliet_Bedford_1983,298.0,0.07,-3.75,t0
 PC_F003,7.5,165.2,40.6,F,Pacific_California,Cailliet_Bedford_1983,298.0,0.07,-3.75,t0
@@ -319,24 +322,24 @@ SS_F004,32.0,321.7,328.7,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
 SS_F005,32.0,312.0,298.6,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
 SS_F006,41.0,344.8,408.7,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
 SS_F007,41.5,353.6,442.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F008,42.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F009,45.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F010,48.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F011,52.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F012,53.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F013,58.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F014,58.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F015,60.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F016,63.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F017,64.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F018,76.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F019,82.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F020,83.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F021,83.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F022,93.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F023,94.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F024,94.5,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
-SS_F025,97.0,363.0,480.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F008,42.0,373.4,525.0,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F009,45.5,358.1,460.1,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F010,48.5,379.5,552.3,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F011,52.5,366.7,495.8,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F012,53.0,375.7,535.1,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F013,58.5,365.0,488.6,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F014,58.5,353.9,443.5,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F015,60.0,354.8,447.2,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F016,63.0,379.5,552.3,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F017,64.0,378.9,549.4,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F018,76.5,354.1,444.2,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F019,82.0,355.5,449.9,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F020,83.0,340.2,391.8,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F021,83.0,364.4,486.1,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F022,93.0,359.8,467.1,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F023,94.5,356.8,454.9,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F024,94.5,379.5,552.3,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
+SS_F025,97.0,379.5,552.3,F,Southwest_SA,Dono_2014,580.0,0.02,-7.52,t0
 SS_M001,0.5,73.8,3.2,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
 SS_M002,3.0,96.1,7.4,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
 SS_M003,7.5,141.4,24.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
@@ -350,16 +353,16 @@ SS_M010,24.5,260.1,168.7,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
 SS_M011,26.5,248.6,146.3,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
 SS_M012,26.5,266.9,182.8,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
 SS_M013,28.0,267.3,183.7,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M014,33.0,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M015,33.0,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M016,35.0,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M017,35.5,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M018,36.0,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M019,40.5,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M020,41.5,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M021,56.5,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M022,56.5,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
-SS_M023,72.0,275.0,200.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M014,33.0,267.8,184.8,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M015,33.0,277.4,206.3,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M016,35.0,286.6,228.8,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M017,35.5,271.3,192.6,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M018,36.0,287.5,231.0,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M019,40.5,275.5,202.1,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M020,41.5,256.2,160.9,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M021,56.5,284.4,223.3,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M022,56.5,276.4,204.1,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
+SS_M023,72.0,271.6,193.3,M,Southwest_SA,Dono_2014,416.0,0.03,-6.18,t0
 WaCS_F001,1.0,106.5,10.2,F,West_and_Central_SA,This_study_fit1,407.65,0.04,-7.08,t0
 WaCS_F002,3.0,139.6,23.9,F,West_and_Central_SA,This_study_fit1,407.65,0.04,-7.08,t0
 WaCS_F003,4.0,146.4,27.8,F,West_and_Central_SA,This_study_fit1,407.65,0.04,-7.08,t0
@@ -403,7 +406,7 @@ WaCS_M019,13.0,246.9,143.3,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.
 WaCS_M020,14.0,249.2,147.5,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
 WaCS_M021,15.5,268.0,185.2,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
 WaCS_M022,15.5,250.4,149.6,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
-WaCS_M023,16.5,275.0,200.9,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
+WaCS_M023,16.5,277.7,207.1,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
 WaCS_M024,17.0,261.6,171.7,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
 WaCS_M025,17.0,272.3,194.7,M,West_and_Central_SA,This_study_fit1,328.74,0.08,-4.47,t0
 WN_F001,1.0,107.2,10.4,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
@@ -415,15 +418,15 @@ WN_F006,4.0,164.3,39.9,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F007,4.0,175.4,48.9,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F008,5.0,241.7,134.0,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
 WN_F009,5.0,242.4,135.1,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
-WN_F010,6.0,261.8,172.1,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
+WN_F010,6.0,265.5,179.8,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
 WN_F011,6.0,241.4,133.4,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
 WN_F012,6.0,200.7,74.7,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F013,6.5,196.9,70.4,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
-WN_F014,8.0,261.8,172.1,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
+WN_F014,8.0,262.6,173.8,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
 WN_F015,8.0,221.6,102.0,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F016,8.0,223.1,104.1,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F017,8.0,221.8,102.3,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
-WN_F018,9.0,261.8,172.1,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
+WN_F018,9.0,251.0,150.8,F,Western_NA,Pratt_Casey_1983,345.0,0.2,-1.0,t0
 WN_F019,9.0,224.7,106.6,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F020,9.5,238.8,129.0,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
 WN_F021,10.5,244.6,139.0,F,Western_NA,Natanson_2006,365.6,0.08,88.4,L0
@@ -459,15 +462,15 @@ WN_M012,5.0,243.6,137.2,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
 WN_M013,5.0,221.7,102.2,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
 WN_M014,5.0,150.9,30.5,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M015,5.5,150.4,30.2,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
-WN_M016,6.5,261.8,172.1,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
+WN_M016,6.5,273.2,196.7,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
 WN_M017,6.5,165.4,40.7,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M018,6.5,181.1,54.1,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M019,6.5,175.6,49.1,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
-WN_M020,7.0,261.8,172.1,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
+WN_M020,7.0,273.7,197.9,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
 WN_M021,7.0,174.7,48.3,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M022,7.0,169.0,43.5,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M023,7.0,174.2,47.9,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
-WN_M024,7.5,261.8,172.1,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
+WN_M024,7.5,268.8,186.9,M,Western_NA,Pratt_Casey_1983,302.0,0.26,-1.0,t0
 WN_M025,8.5,188.0,60.9,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M026,9.5,200.1,74.1,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M027,9.5,191.8,64.8,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
@@ -477,7 +480,7 @@ WN_M030,13.5,215.7,93.7,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M031,14.0,209.2,85.1,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M032,18.5,245.4,140.4,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
 WN_M033,18.5,236.5,125.1,M,Western_NA,Natanson_2006,253.3,0.12,71.6,L0
-WaCN_F001,0.0,65.7,2.2,F,Western_and_Central_NP,Semba_2009,340.0,0.09,59.7,L0
+WaCN_F001,0.0,63.7,2.0,F,Western_and_Central_NP,Semba_2009,340.0,0.09,59.7,L0
 WaCN_F002,0.5,73.2,3.1,F,Western_and_Central_NP,Semba_2009,340.0,0.09,59.7,L0
 WaCN_F003,0.5,73.2,3.1,F,Western_and_Central_NP,Semba_2009,340.0,0.09,59.7,L0
 WaCN_F004,1.5,101.5,8.8,F,Western_and_Central_NP,Semba_2009,340.0,0.09,59.7,L0
