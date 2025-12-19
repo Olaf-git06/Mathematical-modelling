@@ -29,6 +29,20 @@ import os
 # Set seed for reproducibility
 np.random.seed(42)
 
+# Region code mapping to ensure unique prefixes for shark IDs
+REGION_CODES = {
+    "China": "CHN",
+    "Pacific_Australia": "PAU",
+    "Pacific_Baja": "PBJ",
+    "Pacific_California": "PCA",
+    "Pacific_Chile": "PCH",
+    "Pacific_New_Zealand": "PNZ",
+    "Southwest_SA": "SSA",
+    "West_and_Central_SA": "WCSA",
+    "Western_NA": "WNA",
+    "Western_and_Central_NP": "WCNP",
+}
+
 # Model parameters from Table 3 (image: Screenshot 2025-12-19 at 10.44.35.png)
 # Format: region, reference, sex, fl_min, fl_max, linf, k, t0_or_L0, value_type, n_samples, longevity
 PARAMETERS = [
@@ -237,7 +251,7 @@ def generate_data_for_params(params, target_count):
         age_rounded = round(age * 2) / 2
         
         # Generate shark ID (will be reassigned after sorting)
-        region_code = "".join([word[0] for word in region.split("_")])
+        region_code = REGION_CODES.get(region, region[:3].upper())
         shark_id = f"{region_code}_{sex}{i+1:03d}"
         
         data.append({
@@ -289,7 +303,7 @@ def generate_dataset(target_total=500):
     # Reset shark IDs after sorting to be sequential within each region/sex
     new_ids = []
     for (region, sex), group in df.groupby(["region", "sex"]):
-        region_code = "".join([word[0] for word in region.split("_")])
+        region_code = REGION_CODES.get(region, region[:3].upper())
         for i, idx in enumerate(group.index):
             new_ids.append((idx, f"{region_code}_{sex}{i+1:03d}"))
     
