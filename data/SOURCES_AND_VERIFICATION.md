@@ -4,6 +4,8 @@
 
 The file `mako_growth_data_verified.csv` contains age-length-weight data for shortfin mako sharks (*Isurus oxyrinchus*) derived from **validated growth parameters** published in peer-reviewed scientific literature.
 
+The file `mako_vbgm_parameters_by_region.csv` lists **published von Bertalanffy growth model parameters** (L∞, K, t₀/L₀) transcribed from the Table 3 screenshot stored at `data/Screenshot 2025-12-19 at 10.44.35.png` (table compiled/updated from Natanson et al. 2006). Rows are **sorted by region** to make region-based slicing straightforward. A `variant` column distinguishes multiple fits reported within the same study/region/sex, and a `value_type` column indicates whether the value is `t0` (years) or `L0` (cm).
+
 ## How the Data Was Generated
 
 The CSV data was **NOT** collected directly from individual sharks. Instead, it contains **predicted length-at-age values** calculated using published von Bertalanffy and Gompertz growth model parameters. This is a standard approach in fisheries science for generating growth curves for model fitting.
