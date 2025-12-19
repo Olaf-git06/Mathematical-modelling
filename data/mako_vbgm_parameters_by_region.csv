@@ -1,0 +1,39 @@
+# Shortfin Mako VBGM parameters sorted by region (Table 3 screenshot in data folder)
+# Source image: data/Screenshot 2025-12-19 at 10.44.35.png
+# Columns:
+#   region: Region label used for grouping/slicing (sorted alphabetically)
+#   reference: Study citation shorthand
+#   sex: M/F/Combined
+#   fl_cm_min / fl_cm_max: Fork length range in cm
+#   linf_cm: Asymptotic length (Linf) in cm
+#   k_per_year: Growth rate coefficient (year^-1)
+#   t0_or_L0: t0 (years) if reported; L0 (cm) where the table lists L0 instead of t0
+#   n_samples: Sample size reported in the study
+#   notes: Footnotes or clarifications from the table (e.g., PCL converted to FL)
+region,reference,sex,fl_cm_min,fl_cm_max,linf_cm,k_per_year,t0_or_L0,n_samples,notes
+China,Hsu_2003,M,72.6,250.9,321.8,0.04,-6.07,133,
+China,Hsu_2003,F,72.6,314.9,403.62,0.04,-5.27,174,
+Pacific_Australia,Chan_2001,M,66,274,267,0.31,-0.95,24,
+Pacific_Australia,Chan_2001,F,74,314,349,0.15,-1.97,52,
+Pacific_Baja,Ribot_Carballal_2005,M,68.6,264,375.4,0.05,-4.7,109,
+Pacific_Baja,Ribot_Carballal_2005,F,68.6,264,375.4,0.05,-4.7,109,
+Pacific_California,Cailliet_Bedford_1983,M,80.6,293,298,0.07,-3.75,44,
+Pacific_California,Cailliet_Bedford_1983,F,80.6,293,298,0.07,-3.75,44,
+Pacific_Chile,Cerna_Licandeo_2009,M,70,258,268.07,0.08,-3.58,243,"* values derived with PCL, converted to FL"
+Pacific_Chile,Cerna_Licandeo_2009,F,69,300,295.73,0.07,-3.18,304,"* values derived with PCL, converted to FL"
+Pacific_New_Zealand,Bishop_2006,M,100,347,302.2,0.05,-9.04,145,
+Pacific_New_Zealand,Bishop_2006,F,,,"820.1",0.01,-11.3,111,FL range not reported in table
+Southwest_SA,Dono_2014,M,81,250,416,0.03,-6.18,116,
+Southwest_SA,Dono_2014,F,101,330,580,0.02,-7.52,126,
+West_and_Central_SA,This_study,M,79,250,328.74,0.08,-4.47,129,
+West_and_Central_SA,This_study,F,73,296,407.65,0.04,-7.08,109,
+West_and_Central_SA,This_study,M,79,250,340.2,0.14,-2.75,129,
+West_and_Central_SA,This_study,F,73,296,441.64,0.07,-3.98,109,
+West_and_Central_SA,This_study,M,79,250,291.57,0.2,-2.38,129,"BP noted as 2**** in table"
+West_and_Central_SA,This_study,F,73,296,309.79,0.13,-3.27,109,"BP noted as 2**** in table"
+Western_NA,Pratt_Casey_1983,M,69,238,302,0.26,-1,49,
+Western_NA,Pratt_Casey_1983,F,69,238,345,0.2,-1,34,
+Western_NA,Natanson_2006,M,72,260,253.3,0.12,71.6,118,L0 reported instead of t0
+Western_NA,Natanson_2006,F,64,340,365.6,0.08,88.4,140,L0 reported instead of t0
+Western_and_central_NP,Semba_2009,M,73,265,255,0.16,59.7,128,"* PCL values converted to FL; L0 reported"
+Western_and_central_NP,Semba_2009,F,73,330,340,0.09,59.7,147,"* PCL values converted to FL; L0 reported"
