@@ -9,7 +9,7 @@
 # 1. Each row includes source_pdf and pdf_reference columns
 # 2. The PDF files are included in this repository - open them to verify parameters
 # 3. Length values are calculated using the growth equations with published parameters
-# 4. Weight is calculated using: W(kg) = 4.4e-6 * FL(cm)^3.14 (Kohler et al. 1995)
+# 4. Weight is calculated using: W(kg) = 4.4e-6 * FL(cm)^3.14 (Kohler et al. 1996)
 #
 # PRIMARY SOURCES (PDF files in repository):
 # --------------------------------------------

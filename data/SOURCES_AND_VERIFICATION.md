@@ -93,7 +93,7 @@ FL = 1.10 × PCL + 8.1
 **PDF File:** `2014_Makobiology_MFR.pdf`
 
 **Full Citation:**
-> Groeneveld JC, Cliff G, Dudley SFJ,"; let al. (2014) Population structure and biology of shortfin mako, *Isurus oxyrinchus*, in the SW Indian Ocean. *Marine and Freshwater Research* 65:1045-1058
+> Groeneveld JC, Cliff G, Dudley SFJ, et al. (2014) Population structure and biology of shortfin mako, *Isurus oxyrinchus*, in the SW Indian Ocean. *Marine and Freshwater Research* 65:1045-1058
 
 **Where to Find Parameters:**
 - **Page 8** of the PDF (page 1050 of the journal)
