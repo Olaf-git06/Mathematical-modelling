@@ -1,0 +1,173 @@
+# Shortfin Mako Shark (Isurus oxyrinchus) Growth Data - VERIFIED FROM PDF SOURCES
+# ==================================================================================
+# 
+# This CSV contains age-length-weight data derived from VALIDATED von Bertalanffy
+# and Gompertz growth parameters published in peer-reviewed studies.
+#
+# HOW TO VERIFY THIS DATA:
+# --------------------------
+# 1. Each row includes source_pdf and pdf_reference columns
+# 2. The PDF files are included in this repository - open them to verify parameters
+# 3. Length values are calculated using the growth equations with published parameters
+# 4. Weight is calculated using: W(kg) = 4.4e-6 * FL(cm)^3.14 (Kohler et al. 1996)
+#
+# PRIMARY SOURCES (PDF files in repository):
+# --------------------------------------------
+# 1. Natanson et al. 2006:
+#    PDF: Validated_age_and_growth_estimates_for_the_shortfi.pdf
+#    Citation: Natanson LJ et al. (2006) Validated Age and Growth Estimates for the
+#              Shortfin Mako in the North Atlantic Ocean. Environ Biol Fish 77:367-383
+#    Parameters: Table 1 (page 10)
+#    Male: L_inf=253.3cm, K=0.125/yr, L0=71.6cm (3-param von Bertalanffy)
+#    Female: L_inf=365.6cm, K=0.087/yr, L0=88.4cm (3-param Gompertz)
+#
+# 2. Semba et al. 2009:
+#    PDF: Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf
+#    Citation: Semba Y et al. (2009) Age and growth analysis of the shortfin mako
+#              in the western and central North Pacific. Environ Biol Fish 84:377-391
+#    Parameters: Table 2 (page 9)
+#    Male: L_inf=231.0cm PCL, K=0.16/yr, L0=59.7cm
+#    Female: L_inf=308.3cm PCL, K=0.090/yr, L0=59.7cm
+#    Note: PCL converted to FL using: FL = 1.10*PCL + 8.1 (Bishop 2004)
+#
+# 3. Groeneveld et al. 2014:
+#    PDF: 2014_Makobiology_MFR.pdf
+#    Citation: Groeneveld JC et al. (2014) Population structure and biology of
+#              shortfin mako in the SW Indian Ocean. Marine Freshwater Res 65:1045-1058
+#    Parameters: Page 8 (L_inf=285.4cm, K=0.113/yr, L0=90.4cm sex-pooled)
+#
+# LENGTH-WEIGHT RELATIONSHIP:
+# W(kg) = 4.4e-6 * FL(cm)^3.14
+# Source: Kohler NE et al. (1996) NOAA Tech. Memo. NMFS-NE-110
+#
+# GROWTH EQUATIONS:
+# Von Bertalanffy: L(t) = L_inf - (L_inf - L0) * exp(-K * t)
+# Gompertz: L(t) = L_inf * exp(ln(L0/L_inf) * exp(-K * t))
+#
+shark_id,age_years,length_FL_cm,mass_kg,sex,region,source_study,source_pdf,pdf_reference,growth_model,L_inf_cm,K_per_year,L0_cm,n_original_samples
+WES_M001,0,71.6,2.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M002,1,93.0,6.7,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M003,2,111.8,11.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M004,3,128.4,18.4,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M005,4,143.1,25.8,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M006,5,156.0,33.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M007,6,167.5,42.3,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M008,7,177.6,50.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M009,8,186.5,59.3,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M010,9,194.3,67.5,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M011,10,201.2,75.4,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M012,11,207.4,82.8,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M013,12,212.8,89.7,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M014,13,217.5,96.2,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M015,14,221.7,102.2,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M016,15,225.4,107.6,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M017,16,228.7,112.6,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M018,17,231.6,117.1,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M019,18,234.1,121.2,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M020,19,236.4,124.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M021,20,238.4,128.3,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M022,21,240.1,131.2,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M023,22,241.7,133.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M024,23,243.0,136.3,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M025,24,244.3,138.4,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M026,25,245.3,140.3,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M027,26,246.3,142.0,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M028,27,247.1,143.5,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M029,28,247.8,144.9,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_M030,29,248.5,146.1,M,Western_North_Atlantic,Natanson_2006_WNA_Male,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,vbgf,253.3,0.125,71.6,118
+WES_F031,0,88.4,5.7,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F032,1,99.5,8.3,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F033,2,110.9,11.6,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F034,3,122.5,15.9,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F035,4,134.2,21.1,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F036,5,145.9,27.4,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F037,6,157.5,34.9,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F038,7,168.9,43.5,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F039,8,180.1,53.2,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F040,9,191.1,64.0,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F041,10,201.7,75.9,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F042,11,211.9,88.7,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F043,12,221.8,102.3,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F044,13,231.2,116.6,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F045,14,240.2,131.4,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F046,15,248.8,146.7,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F047,16,256.9,162.2,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F048,17,264.6,177.9,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F049,18,271.8,193.6,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F050,19,278.6,209.2,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F051,20,285.0,224.6,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F052,21,290.9,239.8,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F053,22,296.5,254.5,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F054,23,301.8,268.9,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F055,24,306.6,282.7,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F056,25,311.1,296.0,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F057,26,315.4,308.8,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F058,27,319.3,321.0,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F059,28,322.9,332.6,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F060,29,326.2,343.6,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F061,30,329.4,353.9,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F062,31,332.2,363.7,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_F063,32,334.9,373.0,F,Western_North_Atlantic,Natanson_2006_WNA_Female,Validated_age_and_growth_estimates_for_the_shortfi.pdf,Validated_age_and_growth_estimates_for_the_shortfi.pdf; Table 1; Page 10,gompertz,365.6,0.087,88.4,140
+WES_M064,0,73.8,3.2,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M065,1,101.6,8.8,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M066,2,125.4,17.1,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M067,3,145.6,27.3,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M068,4,162.8,38.8,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M069,5,177.5,50.8,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M070,6,190.1,63.0,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M071,7,200.7,74.7,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M072,8,209.8,85.9,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M073,9,217.6,96.3,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M074,10,224.2,105.7,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M075,11,229.8,114.3,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M076,12,234.6,121.9,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M077,13,238.7,128.7,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M078,14,242.1,134.7,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M079,15,245.1,140.0,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M080,16,247.6,144.5,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M081,17,249.8,148.5,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M082,18,251.6,152.0,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M083,19,253.2,155.0,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_M084,20,254.5,157.5,M,Western_Central_North_Pacific,Semba_2009_Pacific_Male,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,231.0,0.16,59.7,128
+WES_F085,0,73.8,3.2,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F086,1,97.3,7.7,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F087,2,118.8,14.4,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F088,3,138.5,23.3,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F089,4,156.4,34.2,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F090,5,172.9,46.8,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F091,6,187.9,60.7,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F092,7,201.6,75.8,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F093,8,214.1,91.6,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F094,9,225.6,107.8,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F095,10,236.0,124.4,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F096,11,245.6,140.9,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F097,12,254.4,157.2,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F098,13,262.4,173.3,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F099,14,269.7,188.9,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F100,15,276.3,204.0,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F101,16,282.4,218.5,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F102,17,288.0,232.3,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F103,18,293.1,245.4,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F104,19,297.8,257.9,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+WES_F105,20,302.0,269.6,F,Western_Central_North_Pacific,Semba_2009_Pacific_Female,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf,Age_and_growth_analysis_of_the_shortfin_mako_Isuru.pdf; Table 2; Page 9,vbgf,308.3,0.09,59.7,147
+SOU_C106,0,90.4,6.1,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C107,1,111.2,11.7,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C108,2,129.8,19.0,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C109,3,146.5,27.8,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C110,4,161.3,37.6,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C111,5,174.6,48.2,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C112,6,186.4,59.3,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C113,7,197.0,70.5,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C114,8,206.4,81.6,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C115,9,214.9,92.6,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C116,10,222.4,103.2,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C117,11,229.1,113.3,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C118,12,235.2,122.9,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C119,13,240.5,131.9,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C120,14,245.3,140.3,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C121,15,249.6,148.2,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C122,16,253.4,155.4,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C123,17,256.8,162.1,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C124,18,259.9,168.2,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C125,19,262.6,173.8,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
+SOU_C126,20,265.1,178.9,Combined,Southwest_Indian_Ocean,Groeneveld_2014_SWIndian,2014_Makobiology_MFR.pdf,2014_Makobiology_MFR.pdf; Page 8; growth parameters section,vbgf,285.4,0.113,90.4,89
